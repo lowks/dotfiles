@@ -42,16 +42,16 @@ imap <F1> <Esc>
 nmap <F1> <Esc>
 
 " disable search highlight until the next search
-nmap <Leader><Leader> :nohls<CR>
+nmap <silent> <Leader><Leader> :nohls<CR>
 
 " buffer-navigation (analogous to tab-navigation)
 nmap gb :bn<CR>
 nmap gB :bp<CR>
 
 " switchers
-nmap <Leader>i :set ignorecase!<CR>
-nmap <Leader>n :set number!<CR>
-nmap <Leader>w :set wrap!<CR>
+nmap <silent> <Leader>n :set number!<CR>
+nmap <Leader>i :set ignorecase!<CR>:set ignorecase?<CR>
+nmap <Leader>w :set wrap!<CR>:set wrap?<CR>
 
 " switch between splits through f7 and f8
 map <f8> <c-w>j<c-w>_
