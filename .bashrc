@@ -165,7 +165,7 @@ load_snapshot() {
 
   [[ -e $dumpname ]] || { echo "ERROR: file '$dumpname' does not exist" >&2; return 1; }
 
-  dropdb "$database" && rake db:create && gzip -d < "$dumpname" | psql "$database"
+  dropdb "$database"; rake db:create && gzip -d < "$dumpname" | psql "$database"
 }
 
 save_snapshot() {
