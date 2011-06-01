@@ -70,6 +70,7 @@ alias gl='git log'
 alias ..='cd ..'
 alias screen='screen -U'
 alias retag='ctags --extra=+f -R .'
+alias flushdns='dscacheutil -flushcache'
 
 # Ruby
 alias r='rake'
