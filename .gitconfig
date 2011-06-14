@@ -10,7 +10,7 @@
 	br = branch
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	commiters = !git log --pretty=short --no-merges | git shortlog -nes
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [core]
 	editor = vim
 	pager = "less -RiqMSj5"
@@ -23,3 +23,5 @@
 [user]
 	name = Cubox
 	email = dev@cuboxsa.com
+[rerere]
+	enable = true
