@@ -158,30 +158,6 @@ rfind() {
   return 1
 }; export -f rfind
 
-load_snapshot() {
-  local dumpname=${1:-~/dump.sql.gz}
-  local config=$(rfind config/database.yml) || { echo "ERROR: could not find 'config/database.yml'" >&2; return 1; }
-  local database=$(ruby -ryaml -e "puts YAML.load_file('$config').fetch('development', {}).fetch('database')")
-
-  [[ -e $dumpname ]] || { echo "ERROR: file '$dumpname' does not exist" >&2; return 1; }
-
-  dropdb "$database"; rake db:create && gzip -d < "$dumpname" | psql "$database"
-}
-
-save_snapshot() {
-  local dumpname=${1:-~/dump.sql.gz}
-  local config=$(rfind config/database.yml) || { echo "ERROR: could not find 'config/database.yml'" >&2; return 1; }
-  local database=$(ruby -ryaml -e "puts YAML.load_file('$config').fetch('development', {}).fetch('database')")
-
-  if [[ -e $dumpname ]]; then
-    read -p "file '$dumpname' exists, overwrite? " -n 1
-    echo
-    [[ $REPLY = [Yy] ]] || return 0
-  fi
-
-  pg_dump "$database" | gzip > "$dumpname"
-}
-
 ################################################################################
 #                                                                              #
 #                                     Prompt                                   #
