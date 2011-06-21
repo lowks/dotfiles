@@ -129,6 +129,18 @@ urldecode() {
 # Use MacVim's terminal vim (requires MacVim installed via homebrew)
 vim() {
   local macvim_path=$(brew info macvim | sed -n '/installed to:/ {n;p;q;}')/MacVim.app/Contents/MacOS/Vim
+
+  if [[ $1 == *#* ]]; then
+    local controller=${1%#*} action=${1#*#}; shift
+
+    local re=\(.*\)\([A-Z]\)\(.*\)
+    while [[ $controller =~ $re ]]; do
+      controller=${BASH_REMATCH[1]:+${BASH_REMATCH[1]}_}${BASH_REMATCH[2],,}${BASH_REMATCH[3]}
+    done
+
+    set -- +/"^\\s*def \\zs\\<$action\\>" +"normal zz" "app/controllers/${controller}.rb" "$@"
+  fi
+
   if [[ -x $macvim_path ]]; then
     "$macvim_path" "$@"
   else
