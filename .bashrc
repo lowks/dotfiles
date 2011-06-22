@@ -118,12 +118,12 @@ complete -o default -o nospace -F _cdgem cdgem;
 
 # Encode the string into "%xx"
 urlencode() {
-  ruby -e 'puts ARGV[0].split(/%/).map{|c|"%c"%c.to_i(16)} * ""' $1
+  ruby -e 'puts ARGV[0].split(/%/).map{|c|"%c"%c.to_i(16)} * ""' "$1"
 }
 
 # Decode a urlencoded string ("%xx")
 urldecode() {
-  ruby -r cgi -e 'puts CGI.unescape ARGV[0]' $1
+  ruby -r cgi -e 'puts CGI.unescape ARGV[0]' "$1"
 }
 
 # Use MacVim's terminal vim (requires MacVim installed via homebrew)
