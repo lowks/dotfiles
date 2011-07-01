@@ -184,6 +184,21 @@ steps () {
   egrep -Ir "$pattern" features/step_definitions/ "$@"
 }; export -f steps
 
+run_features() {
+  local pattern=$1; shift
+
+  local features=()
+  while IFS= read -r -d '' feature; do
+    features+=("$feature")
+  done < <(features "$pattern" -lZ)
+
+  if ((${#features[@]})); then
+    cucumber "$@" -- "${features[@]}"
+  else
+    echo 'no matches' >&2; return 1
+  fi
+}
+
 ################################################################################
 #                                                                              #
 #                                     Prompt                                   #
