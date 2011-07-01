@@ -173,6 +173,17 @@ rfind() {
   return 1
 }; export -f rfind
 
+# find cucumber features and step definitions
+features () {
+  local pattern=$1; shift
+  egrep -Ir "$pattern" features/ --include '*.feature' "$@"
+}; export -f features
+
+steps () {
+  local pattern=$1; shift
+  egrep -Ir "$pattern" features/step_definitions/ "$@"
+}; export -f steps
+
 ################################################################################
 #                                                                              #
 #                                     Prompt                                   #
