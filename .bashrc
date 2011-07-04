@@ -1,3 +1,4 @@
+# vim: sts=2 sw=2 et
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # We're using 64 bits, right?
