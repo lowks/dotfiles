@@ -23,6 +23,10 @@ export RUBYOPT="rubygems Ilib Itest Ispec"
 export MANPAGER='bash -c "vim -MRn -c \"set ft=man nomod nolist nospell nonu\" \
 -c \"nm q :qa!<CR>\" -c \"nm <end> G\" -c \"nm <home> gg\"</dev/tty <(col -b)"'
 
+if ((${BASH_VERSINFO[0]} >= 4)) && ! shopt globstar >/dev/null; then
+  shopt -s globstar # recursive globs fuck yes!
+fi
+
 ################################################################################
 #                                                                              #
 #                               External Scripts                               #
