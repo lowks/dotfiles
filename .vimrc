@@ -23,6 +23,10 @@ set autoindent
 set showmatch
 runtime! macros/matchit.vim
 
+" Tab Completion
+set wildmenu
+set wildmode=list:longest,full
+
 " Search config
 set incsearch
 set ignorecase
