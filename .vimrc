@@ -57,6 +57,7 @@ nmap <silent> <Leader>n :set number!<CR>
 nmap <Leader>i :set ignorecase!<CR>:set ignorecase?<CR>
 nmap <Leader>w :set wrap!<CR>:set wrap?<CR>
 
+set winminheight=0
 " switch between splits through f7 and f8
 map <f8> <c-w>j<c-w>_
 imap <f8> <esc><f8>
@@ -105,6 +106,9 @@ augroup MyAutoCommands
   " Other langs
   autocmd FileType python,php  set shiftwidth=4 softtabstop=4 expandtab
 
+  " Coffee
+  autocmd FileType coffee set shiftwidth=2 softtabstop=2 expandtab
+
   " Vim files
   autocmd FileType     vim     set shiftwidth=2 softtabstop=2 expandtab
   autocmd BufWritePost .vimrc  source $MYVIMRC
@@ -117,3 +121,4 @@ augroup END
 set list
 set listchars=tab:→\ ,trail:·
 
+autocmd FileType go set nolist
