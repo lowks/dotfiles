@@ -1,3 +1,6 @@
 [submodule ".emacs.d/nu7macs"]
 	path = .emacs.d/nu7macs
 	url = git://github.com/nu7hatch/nu7macs
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git

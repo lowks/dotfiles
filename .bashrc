@@ -79,6 +79,11 @@ alias flushdns='dscacheutil -flushcache'
 
 # Ruby
 alias r='rake'
+rff() {
+# rake features FEATUVRE=features/"$1".feature
+# bundle exec cucumber --require features/support --require features/step_definitions features/"$1".feature
+	bundle exec cucumber --require features/support --require features/step_definitions "$1"
+}
 
 # Rails 2
 alias sg='script/generate'
@@ -95,6 +100,7 @@ alias rd='script/rails dbconsole'
 # Bundler
 alias b='bundle'
 alias bx='bundle exec'
+alias bi='bundle install'
 
 ################################################################################
 #                                                                              #

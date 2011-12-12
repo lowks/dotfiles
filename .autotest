@@ -1,5 +1,21 @@
 begin
   require "autotest/fsevent"
 rescue LoadError
-  STDERR.puts "** You should install autotest-fsevent to preserve your hard drive :)"
+  STDERR.puts "gem i autotest-fsevent "
+end
+
+Autotest.add_hook :initialize do |at|
+  at.add_exception '.git'
+end
+
+Autotest.add_hook :red do
+  Kernel.system("/usr/bin/afplay ~/no.mp3")
+  false
+end
+
+Autotest.add_hook :green do
+  Kernel.system("git up") #pull --rebase every branch
+  if $? == 0
+    Kernel.system("grep -rin 'debugger' .")
+  end
 end
