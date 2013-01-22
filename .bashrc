@@ -196,3 +196,9 @@ rfind() {
 #   ▸
 export PS1='\[\033[01;32m\]\h \[\033[01;33m\]\w$(__git_ps1 " \[\033[01;36m\]\
 (git: %s)")\[\033[01;37m\]\n▸\[\033[00m\] '
+
+# History filtering autocompletion
+# Pressing UP or DOWN arrows after writing the first characters of a command
+# will filter bash history
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
