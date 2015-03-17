@@ -9,6 +9,7 @@
 	up = pull --rebase
 	br = branch
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+	unpushed = "!f() { git cherry -v $1; }; f"
 	committers = !git log --pretty=short --no-merges | git shortlog -nes
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [core]
